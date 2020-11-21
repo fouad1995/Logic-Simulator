@@ -2,38 +2,38 @@
 #include<iostream>
 Node::Node()
 {
-    name="";//ctor
-    value=0;
+	name = "";//ctor
+	value = 0;
 }
 
 Node::Node(string n)
 {
-name=n;
-value=0;
+	name = n;
+	value = 0;
 }
 
-Node::Node(string n,int v)
+Node::Node(string n, int v)
 {
-name=n;
-value=v;
+	name = n;
+	value = v;
 }
 
 void Node::setname(string n)
 {
-name=n;
+	name = n;
 }
 
- string Node:: getname()
+string Node::getname()
 {
-return name;
+	return name;
 }
 
 void Node::setvalue(int v)
 {
-value=v;
+	value = v;
 }
 
 int Node::getvalue()
 {
-return value;
+	return value;
 }

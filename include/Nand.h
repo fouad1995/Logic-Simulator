@@ -7,7 +7,7 @@ class Nand
     public:
         Nand();
         virtual ~Nand();
-        void Calculate_out
+        void Calculate_out();
     protected:
     private:
 };

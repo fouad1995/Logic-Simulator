@@ -1,0 +1,19 @@
+
+set(srcs
+	And_Gate.cpp
+	Gate.cpp
+	Nand.cpp
+	NAND_Gate.cpp
+	Node.cpp
+	NOR_Gate.cpp
+	NOT_Gate.cpp
+	OR_Gate.cpp
+	XNOR_Gate.cpp
+	XOR_Gate.cpp
+	main.cpp)
+
+add_executable(LogicSimulator ${srcs})
+
+target_include_directories(LogicSimulator 
+	                       PUBLIC
+						   ${CMAKE_CURRENT_SOURCE_DIR}/../include)

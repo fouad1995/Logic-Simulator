@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.12)
+
+set(AndGate TestAnd )
+
+find_package(GTest)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+add_executable(${AndGate} TestAnd.cpp )
+
+target_link_libraries(${AndGate} 
+                      PUBLIC    
+                      ${GTEST_BOTH_LIBRARIES})
+
+
+add_test(
+         NAME ${AndGate}
+         COMMAND ${AndGate} 
+)
