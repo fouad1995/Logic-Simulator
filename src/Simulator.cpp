@@ -1,16 +1,18 @@
-#include "Simulator.h"
+//stl
 #include<fstream>
+//internal
+#include "Simulator.h"
 Simulator::Simulator()
 {
-	int i;
-	gs = 0;
-	ns = 0;
-	for (i = 0; i < GetNode_Size(); i++)
-		N[i] = NULL;
+	
+	mGateSize = 0;
+	mNodeSize = 0;
+	for (int i = 0; i < GetNode_Size(); i++)
+		mNodes[i] = NULL;
 
 
 	for (i = 0; i < GetGate_Size(); i++)
-		G[i] = NULL;
+		mGates[i] = NULL;
 
 
 }
@@ -20,46 +22,45 @@ Simulator::~Simulator()
 	int i;
 
 	for (i = 0; i < GetNode_Size(); i++)
-		delete[] N[i];
+		delete[] mNodes[i];
 
 	for (i = 0; i < GetGate_Size(); i++)
-		delete[] G[i];
+		delete[] mGates[i];
 }
 
 void Simulator::SetNode_Size(int n)
 {
-	ns = n;
+	mNodeSize = n;
 }
 
 int Simulator::GetNode_Size()
 {
-	return ns;
+	return mNodeSize;
 }
 
 void Simulator::SetGate_Size(int n)
 {
-	gs = n;
+	mGateSize = n;
 }
 
 int Simulator::GetGate_Size()
 {
-	return gs;
+	return mGateSize;
 }
 
 Node* Simulator::Creat_Node(string n)
 {
-	N[ns] = new Node(n);
-	ns++;
-	return N[ns - 1];
+	mNodes[mNodeSize] = new Node(n);
+	mNodeSize++;
+	return mNodes[mNodeSize - 1];
 }
 
 Node* Simulator::Find_Node(string n)
 {
-	int i;
-	for (i = 0; i < GetNode_Size(); i++)
+	for (int i = 0; i < GetNode_Size(); i++)
 	{
-		if (n == (N[i]->getname())) {
-			return N[i];
+		if (n == (mNodes[i]->getname())) {
+			return mNodes[i];
 		}
 	}
 	return Creat_Node(n);
@@ -71,7 +72,7 @@ void Simulator::Print_All()
 	int i;
 
 	for (i = 0; i < GetNode_Size(); i++)
-		cout << "Node name is  " << N[i]->getname() << "\t\t" << "VALUE = " << N[i]->getvalue() << endl;
+		cout << "Node mName is  " << mNodes[i]->getname() << "\t\t" << "VALUE = " << mNodes[i]->getvalue() << endl;
 
 }
 
@@ -103,19 +104,15 @@ Gate* Simulator::Creat_Gate(string n)
 	else
 		return NULL;
 
-	gs++;
-	G[gs - 1] = p;
-	return G[gs - 1];
+	mGateSize++;
+	mGates[mGateSize - 1] = p;
+	return mGates[mGateSize - 1];
 }
 
 void Simulator::simulate()
 {
-	int i;
-
-	for (i = 0; i < GetGate_Size(); i++)
-		G[i]->Calculate_Out();
-
-
+	for (int i = 0; i < GetGate_Size(); i++)
+		mGates[i]->Calculate_Out();
 
 }
 
@@ -129,37 +126,37 @@ void Simulator::Load(const char* filename)
 	}
 	while (!f1.eof())
 	{
-		string N;
-		f1 >> N;
+		string mNodes;
+		f1 >> mNodes;
 
-		if (N == "SET")
+		if (mNodes == "SET")
 		{
 			string node;
-			int value;
-			f1 >> node >> value;
-			Find_Node(node)->setvalue(value);
+			int mValue;
+			f1 >> node >> mValue;
+			Find_Node(node)->setvalue(mValue);
 
 		}
 
 
-		else if (N == "OUT")
+		else if (mNodes == "OUT")
 		{
-			string out;
-			f1 >> out;
-			if (out == "ALL")
+			string mOut;
+			f1 >> mOut;
+			if (mOut == "ALL")
 				Print_All();
 			else
-				cout << "The output node is   " << Find_Node(out)->getname() << "\t\t" << "VALUE = " << Find_Node(out)->getvalue() << endl;
+				cout << "The output node is   " << Find_Node(mOut)->getname() << "\t\t" << "VALUE = " << Find_Node(mOut)->getvalue() << endl;
 		}
 
-		else if (N == "SIM")
+		else if (mNodes == "SIM")
 			simulate();
 
-		else if (N == "END")
+		else if (mNodes == "END")
 			break;
 
 		else {
-			Gate* g = Creat_Gate(N);
+			Gate* g = Creat_Gate(mNodes);
 			string node1, node2, node3;
 			f1 >> node1 >> node2 >> node3;
 			g->set_in1(Find_Node(node1));

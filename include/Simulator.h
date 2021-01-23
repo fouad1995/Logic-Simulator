@@ -11,10 +11,10 @@
 class Simulator
 {
 private:
-	Node* N[1000];
-	Gate* G[1000];
-	int ns;
-	int gs;
+	Node* mNodes[1000];
+	Gate* mGates[1000];
+	int mNodeSize;
+	int mGateSize;
 
 public:
 	Simulator();
