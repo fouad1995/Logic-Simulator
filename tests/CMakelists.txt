@@ -15,8 +15,21 @@ target_include_directories(TestAnd
 						   ${core_includes}
                            ${includes}/and/AND_gate.h
                            )
-
 target_link_libraries(TestAnd ${SYSLIBS} GTest::GTest GTest::Main)
+
+add_executable(TestOr  
+               ${core_srcs}
+               ${srcs}/or/OR_Gate.cpp
+               TestOrGate.cpp
+               )
+
+target_include_directories(TestOr 
+	                       PRIVATE
+						   ${core_includes}
+                           ${includes}/and/OR_Gate.h
+                           )
+
+target_link_libraries(TestOr ${SYSLIBS} GTest::GTest GTest::Main)
 
 #add_test(NAME AndGate COMMAND TestAnd)
 #add_test(AndGate TestAnd)

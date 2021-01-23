@@ -1,4 +1,4 @@
-#include "OR_Gate.h"
+#include "../include/or/OR_Gate.h"
 
 void OR_Gate::Calculate_Out()
 {
