@@ -1,4 +1,4 @@
-#include "NAND_Gate.h"
+#include "../include/nand/NAND_Gate.h"
 
 void NAND_Gate::Calculate_Out()
 {

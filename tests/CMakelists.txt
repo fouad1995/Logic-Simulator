@@ -45,5 +45,19 @@ target_include_directories(TestNot
                            )
 
 target_link_libraries(TestNot ${SYSLIBS} GTest::GTest GTest::Main)
+
+add_executable(TestNand  
+               ${core_srcs}
+               ${srcs}/nand/NAND_Gate.cpp
+               TestNandGate.cpp
+               )
+
+target_include_directories(TestNand 
+	                       PRIVATE
+						   ${core_includes}
+                           ${includes}/nand/NAND_Gate.h
+                           )
+
+target_link_libraries(TestNand ${SYSLIBS} GTest::GTest GTest::Main)
 #add_test(NAME AndGate COMMAND TestAnd)
 #add_test(AndGate TestAnd)

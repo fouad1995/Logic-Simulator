@@ -1,6 +1,6 @@
 #ifndef NAND_GATE_H
 #define NAND_GATE_H
-#include"Gate.h"
+#include "../include/core/Gate.h"
 
 class NAND_Gate:public Gate
 {

@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 #include "../include/not/Not_Gate.h"
 
+//<! TODO(FOUAD) : apply more checks as NOT-GATE is "not" allowed to take more than one input 
+//<! but currently it will take one input if you gave it two inputs it will ignore the second one
+
 class TestNot {
 public:
 	TestNot(int input1) {
