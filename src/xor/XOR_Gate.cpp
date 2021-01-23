@@ -1,4 +1,4 @@
-#include "XOR_Gate.h"
+#include "../include/xor/XOR_Gate.h"
 
 
 void XOR_Gate::Calculate_Out()

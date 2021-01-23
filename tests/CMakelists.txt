@@ -59,5 +59,18 @@ target_include_directories(TestNand
                            )
 
 target_link_libraries(TestNand ${SYSLIBS} GTest::GTest GTest::Main)
-#add_test(NAME AndGate COMMAND TestAnd)
-#add_test(AndGate TestAnd)
+
+
+add_executable(TestXor  
+               ${core_srcs}
+               ${srcs}/xor/XOR_Gate.cpp
+               TestXorGate.cpp
+               )
+
+target_include_directories(TestXor 
+	                       PRIVATE
+						   ${core_includes}
+                           ${includes}/xor/XOR_Gate.h
+                           )
+
+target_link_libraries(TestXor ${SYSLIBS} GTest::GTest GTest::Main)
