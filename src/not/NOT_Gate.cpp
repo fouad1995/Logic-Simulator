@@ -1,4 +1,4 @@
-#include "NOT_Gate.h"
+#include "../include/not/NOT_Gate.h"
 
 void NOT_Gate::Calculate_Out()
 {

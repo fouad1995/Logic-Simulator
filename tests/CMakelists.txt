@@ -31,5 +31,19 @@ target_include_directories(TestOr
 
 target_link_libraries(TestOr ${SYSLIBS} GTest::GTest GTest::Main)
 
+
+add_executable(TestNot  
+               ${core_srcs}
+               ${srcs}/not/NOT_Gate.cpp
+               TestNotGate.cpp
+               )
+
+target_include_directories(TestNot 
+	                       PRIVATE
+						   ${core_includes}
+                           ${includes}/not/NOT_Gate.h
+                           )
+
+target_link_libraries(TestNot ${SYSLIBS} GTest::GTest GTest::Main)
 #add_test(NAME AndGate COMMAND TestAnd)
 #add_test(AndGate TestAnd)

@@ -1,11 +1,8 @@
-#ifndef NOT_GATE_H
-#define NOT_GATE_H
-#include"Gate.h"
+#pragma once
+#include "../include/core/Gate.h"
 
 class NOT_Gate :public Gate
 {
 public:
 	void Calculate_Out();
 };
-
-#endif // NOT_GATE_H
