@@ -74,3 +74,40 @@ target_include_directories(TestXor
                            )
 
 target_link_libraries(TestXor ${SYSLIBS} GTest::GTest GTest::Main)
+
+
+
+add_executable(TestXnor  
+               ${core_srcs}
+               ${srcs}/xnor/XNOR_Gate.cpp
+               TestXnorGate.cpp
+               )
+
+target_include_directories(TestXnor 
+	                       PRIVATE
+						   ${core_includes}
+                           ${includes}/xnor/XNOR_Gate.h
+                           )
+
+target_link_libraries(TestXnor ${SYSLIBS} GTest::GTest GTest::Main)
+
+
+
+
+
+add_executable(Testnor  
+               ${core_srcs}
+               ${srcs}/nor/NOR_Gate.cpp
+               TestnorGate.cpp
+               )
+
+target_include_directories(Testnor 
+	                       PRIVATE
+						   ${core_includes}
+                           ${includes}/nor/NOR_Gate.h
+                           )
+
+target_link_libraries(Testnor ${SYSLIBS} GTest::GTest GTest::Main)
+
+
+

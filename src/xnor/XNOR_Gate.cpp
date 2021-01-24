@@ -1,4 +1,4 @@
-#include "XNOR_Gate.h"
+#include "../include/xnor/XNOR_Gate.h"
 
 void XNOR_Gate::Calculate_Out()
 {

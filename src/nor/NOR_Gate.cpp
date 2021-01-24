@@ -1,4 +1,4 @@
-#include "NOR_Gate.h"
+#include "../include/nor/NOR_Gate.h"
 
 
 void NOR_Gate::Calculate_Out()
