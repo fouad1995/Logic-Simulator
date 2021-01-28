@@ -1,10 +1,10 @@
 //#include "And_Gate.h"
 #include "../include/and/And_Gate.h"
 
-AND_gate::AND_gate():Gate(){
+and_gate::and_gate():Gate(){
 }
 
-void AND_gate::Calculate_Out()
+void and_gate::Calculate_Out()
 {
 	if (mFirstInput->getvalue() == 1 && mSecondInput->getvalue() == 1)
 		mOut->setvalue(1);

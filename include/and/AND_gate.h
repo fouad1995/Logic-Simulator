@@ -1,10 +1,10 @@
 #pragma once
 
 #include "../include/core/Gate.h"
-class AND_gate : public Gate
+class and_gate : public Gate
 {
 public:
-	AND_gate();
+	and_gate();
 	void Calculate_Out();
 };
 

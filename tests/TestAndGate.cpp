@@ -6,7 +6,7 @@ class TestAnd {
 
 public:
 	TestAnd(int input1 , int input2) {
-		auto and = new AND_gate();
+		auto and = new and_gate();
 		and ->set_in1(new Node("1", input1));
 		and ->set_in2(new Node("2", input2));
 		and ->set_out(new Node("out"));//<! out will be set

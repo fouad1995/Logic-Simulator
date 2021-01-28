@@ -2,7 +2,7 @@
 #define NAND_GATE_H
 #include "../include/core/Gate.h"
 
-class NAND_Gate:public Gate
+class nand_gate:public Gate
 {
     public:
        void Calculate_Out();

@@ -7,7 +7,7 @@
 class TestNot {
 public:
 	TestNot(int input1) {
-		auto not = new NOT_Gate();
+		auto not = new not_gate();
 		not->set_in1(new Node("1", input1));
 		not->set_out(new Node("out"));//<! out will be set
 		not->Calculate_Out();

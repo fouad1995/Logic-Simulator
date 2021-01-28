@@ -6,7 +6,7 @@ class TestNand {
 
 public:
 	TestNand(int input1 , int input2) {
-		auto nand = new NAND_Gate();
+		auto nand = new nand_gate();
 		nand ->set_in1(new Node("1", input1));
 		nand ->set_in2(new Node("2", input2));
 		nand ->set_out(new Node("out"));//<! out will be set

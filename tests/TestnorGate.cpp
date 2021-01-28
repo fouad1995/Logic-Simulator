@@ -6,7 +6,7 @@ class TestNor {
 
 public:
 	TestNor(int input1, int input2) {
-		auto nor = new NOR_Gate();
+		auto nor = new nor_gate();
 		nor->set_in1(new Node("1", input1));
 		nor->set_in2(new Node("2", input2));
 		nor->set_out(new Node("out"));//<! out will be set

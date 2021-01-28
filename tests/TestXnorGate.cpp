@@ -6,7 +6,7 @@ class TestXnor {
 
 public:
 	TestXnor(int input1, int input2) {
-		auto xnor = new XNOR_Gate();
+		auto xnor = new xnor_gate();
 		xnor->set_in1(new Node("1", input1));
 		xnor->set_in2(new Node("2", input2));
 		xnor->set_out(new Node("out"));//<! out will be set

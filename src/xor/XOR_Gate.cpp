@@ -1,7 +1,7 @@
 #include "../include/xor/XOR_Gate.h"
 
 
-void XOR_Gate::Calculate_Out()
+void xor_gate::Calculate_Out()
 {
 	if (mFirstInput->getvalue() == mSecondInput->getvalue())
 		mOut->setvalue(0);

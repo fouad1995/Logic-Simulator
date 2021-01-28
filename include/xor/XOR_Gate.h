@@ -1,7 +1,7 @@
 #pragma once
 #include "../include/core/Gate.h"
 
-class XOR_Gate :public Gate
+class xor_gate :public Gate
 {
 public:
 	void Calculate_Out();

@@ -6,7 +6,7 @@ class TestXor {
 
 public:
 	TestXor(int input1, int input2) {
-		auto xor = new XOR_Gate();
+		auto xor = new xor_gate();
 		xor ->set_in1(new Node("1", input1));
 		xor ->set_in2(new Node("2", input2));
 		xor ->set_out(new Node("out"));//<! out will be set

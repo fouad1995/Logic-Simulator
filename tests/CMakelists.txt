@@ -6,27 +6,27 @@ set(core_includes ${includes}/core/Gate.h ${includes}/core/Node.h)
 
 add_executable(TestAnd  
                ${core_srcs}
-               ${srcs}/and/And_Gate.cpp
+               ${srcs}/and/and_gate.cpp
                TestAndGate.cpp
                )
 
 target_include_directories(TestAnd 
 	                       PRIVATE
 						   ${core_includes}
-                           ${includes}/and/AND_gate.h
+                           ${includes}/and/and_gate.h
                            )
 target_link_libraries(TestAnd ${SYSLIBS} GTest::GTest GTest::Main)
 
 add_executable(TestOr  
                ${core_srcs}
-               ${srcs}/or/OR_Gate.cpp
+               ${srcs}/or/or_gate.cpp
                TestOrGate.cpp
                )
 
 target_include_directories(TestOr 
 	                       PRIVATE
 						   ${core_includes}
-                           ${includes}/and/OR_Gate.h
+                           ${includes}/and/or_gate.h
                            )
 
 target_link_libraries(TestOr ${SYSLIBS} GTest::GTest GTest::Main)
@@ -34,28 +34,28 @@ target_link_libraries(TestOr ${SYSLIBS} GTest::GTest GTest::Main)
 
 add_executable(TestNot  
                ${core_srcs}
-               ${srcs}/not/NOT_Gate.cpp
+               ${srcs}/not/not_gate.cpp
                TestNotGate.cpp
                )
 
 target_include_directories(TestNot 
 	                       PRIVATE
 						   ${core_includes}
-                           ${includes}/not/NOT_Gate.h
+                           ${includes}/not/not_gate.h
                            )
 
 target_link_libraries(TestNot ${SYSLIBS} GTest::GTest GTest::Main)
 
 add_executable(TestNand  
                ${core_srcs}
-               ${srcs}/nand/NAND_Gate.cpp
+               ${srcs}/nand/nand_gate.cpp
                TestNandGate.cpp
                )
 
 target_include_directories(TestNand 
 	                       PRIVATE
 						   ${core_includes}
-                           ${includes}/nand/NAND_Gate.h
+                           ${includes}/nand/nand_gate.h
                            )
 
 target_link_libraries(TestNand ${SYSLIBS} GTest::GTest GTest::Main)
@@ -63,14 +63,14 @@ target_link_libraries(TestNand ${SYSLIBS} GTest::GTest GTest::Main)
 
 add_executable(TestXor  
                ${core_srcs}
-               ${srcs}/xor/XOR_Gate.cpp
+               ${srcs}/xor/xor_gate.cpp
                TestXorGate.cpp
                )
 
 target_include_directories(TestXor 
 	                       PRIVATE
 						   ${core_includes}
-                           ${includes}/xor/XOR_Gate.h
+                           ${includes}/xor/xor_gate.h
                            )
 
 target_link_libraries(TestXor ${SYSLIBS} GTest::GTest GTest::Main)
@@ -79,14 +79,14 @@ target_link_libraries(TestXor ${SYSLIBS} GTest::GTest GTest::Main)
 
 add_executable(TestXnor  
                ${core_srcs}
-               ${srcs}/xnor/XNOR_Gate.cpp
+               ${srcs}/xnor/xnor_gate.cpp
                TestXnorGate.cpp
                )
 
 target_include_directories(TestXnor 
 	                       PRIVATE
 						   ${core_includes}
-                           ${includes}/xnor/XNOR_Gate.h
+                           ${includes}/xnor/xnor_gate.h
                            )
 
 target_link_libraries(TestXnor ${SYSLIBS} GTest::GTest GTest::Main)
@@ -97,14 +97,14 @@ target_link_libraries(TestXnor ${SYSLIBS} GTest::GTest GTest::Main)
 
 add_executable(Testnor  
                ${core_srcs}
-               ${srcs}/nor/NOR_Gate.cpp
+               ${srcs}/nor/nor_gate.cpp
                TestnorGate.cpp
                )
 
 target_include_directories(Testnor 
 	                       PRIVATE
 						   ${core_includes}
-                           ${includes}/nor/NOR_Gate.h
+                           ${includes}/nor/nor_gate.h
                            )
 
 target_link_libraries(Testnor ${SYSLIBS} GTest::GTest GTest::Main)

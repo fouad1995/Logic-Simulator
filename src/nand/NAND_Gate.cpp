@@ -1,6 +1,6 @@
 #include "../include/nand/NAND_Gate.h"
 
-void NAND_Gate::Calculate_Out()
+void nand_gate::Calculate_Out()
 {
 
 	if (mFirstInput->getvalue() == 1 && mSecondInput->getvalue() == 1)

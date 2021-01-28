@@ -1,6 +1,6 @@
 #include "../include/or/OR_Gate.h"
 
-void OR_Gate::Calculate_Out()
+void or_gate::Calculate_Out()
 {
 
 	if (mFirstInput->getvalue() == 0 && mSecondInput->getvalue() == 0)

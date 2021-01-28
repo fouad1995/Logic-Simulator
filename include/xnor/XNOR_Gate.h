@@ -2,7 +2,7 @@
 
 #include "../include/core/Gate.h"
 
-class XNOR_Gate :public Gate
+class xnor_gate :public Gate
 {
 public:
 	void Calculate_Out();

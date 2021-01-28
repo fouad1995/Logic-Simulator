@@ -2,7 +2,7 @@
 #include "../include/core/Gate.h"
 
 
-class OR_Gate :public Gate
+class or_gate :public Gate
 {
 public:
 	void Calculate_Out();

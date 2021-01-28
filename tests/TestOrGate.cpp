@@ -6,7 +6,7 @@ class TestOr {
 
 public:
 	TestOr(int input1, int input2) {
-		auto or = new OR_Gate();
+		auto or = new or_gate();
 		or ->set_in1(new Node("1", input1));
 		or ->set_in2(new Node("2", input2));
 		or ->set_out(new Node("out"));//<! out will be set

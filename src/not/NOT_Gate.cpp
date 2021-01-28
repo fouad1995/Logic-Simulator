@@ -1,6 +1,6 @@
 #include "../include/not/NOT_Gate.h"
 
-void NOT_Gate::Calculate_Out()
+void not_gate::Calculate_Out()
 {
 	if (mFirstInput->getvalue() == 1)
 		mOut->setvalue(0);
