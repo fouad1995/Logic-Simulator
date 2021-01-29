@@ -1,13 +1,13 @@
 #pragma once
 #include"Node.h"
 #include<iostream>
-
+#include "LogicSimulator_Export.h"
 /*@brief class Gate is an abstract class that represent Logic gate
 *		 Each Gate has two input and one output
 *		 Each input could be a value or another compination of Nodes
 *		 Each output could be a value or another compination of Nodes
 */
-class Gate
+class LogicSimulator_EXPORT Gate
 {
 public:
 

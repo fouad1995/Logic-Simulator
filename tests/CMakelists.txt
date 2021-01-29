@@ -1,113 +1,13 @@
-set(srcs ${CMAKE_SOURCE_DIR}/src)
-set(core_srcs ${srcs}/core/Gate.cpp ${srcs}/core/Node.cpp)
+# ${CMAKE_SOURCE_DIR}/tests/CMakeLists.txt
+find_package(GTest REQUIRED)
 
-set(includes ${CMAKE_SOURCE_DIR}/include)
-set(core_includes ${includes}/core/Gate.h ${includes}/core/Node.h)
+if(ENABLE_TESTS)
+  add_subdirectory(unit-tests)
+endif()
 
-add_executable(TestAnd  
-               ${core_srcs}
-               ${srcs}/and/and_gate.cpp
-               TestAndGate.cpp
-               )
-
-target_include_directories(TestAnd 
-	                       PRIVATE
-						   ${core_includes}
-                           ${includes}/and/and_gate.h
-                           )
-target_link_libraries(TestAnd ${SYSLIBS} GTest::GTest GTest::Main)
-
-add_executable(TestOr  
-               ${core_srcs}
-               ${srcs}/or/or_gate.cpp
-               TestOrGate.cpp
-               )
-
-target_include_directories(TestOr 
-	                       PRIVATE
-						   ${core_includes}
-                           ${includes}/and/or_gate.h
-                           )
-
-target_link_libraries(TestOr ${SYSLIBS} GTest::GTest GTest::Main)
-
-
-add_executable(TestNot  
-               ${core_srcs}
-               ${srcs}/not/not_gate.cpp
-               TestNotGate.cpp
-               )
-
-target_include_directories(TestNot 
-	                       PRIVATE
-						   ${core_includes}
-                           ${includes}/not/not_gate.h
-                           )
-
-target_link_libraries(TestNot ${SYSLIBS} GTest::GTest GTest::Main)
-
-add_executable(TestNand  
-               ${core_srcs}
-               ${srcs}/nand/nand_gate.cpp
-               TestNandGate.cpp
-               )
-
-target_include_directories(TestNand 
-	                       PRIVATE
-						   ${core_includes}
-                           ${includes}/nand/nand_gate.h
-                           )
-
-target_link_libraries(TestNand ${SYSLIBS} GTest::GTest GTest::Main)
-
-
-add_executable(TestXor  
-               ${core_srcs}
-               ${srcs}/xor/xor_gate.cpp
-               TestXorGate.cpp
-               )
-
-target_include_directories(TestXor 
-	                       PRIVATE
-						   ${core_includes}
-                           ${includes}/xor/xor_gate.h
-                           )
-
-target_link_libraries(TestXor ${SYSLIBS} GTest::GTest GTest::Main)
-
-
-
-add_executable(TestXnor  
-               ${core_srcs}
-               ${srcs}/xnor/xnor_gate.cpp
-               TestXnorGate.cpp
-               )
-
-target_include_directories(TestXnor 
-	                       PRIVATE
-						   ${core_includes}
-                           ${includes}/xnor/xnor_gate.h
-                           )
-
-target_link_libraries(TestXnor ${SYSLIBS} GTest::GTest GTest::Main)
-
-
-
-
-
-add_executable(Testnor  
-               ${core_srcs}
-               ${srcs}/nor/nor_gate.cpp
-               TestnorGate.cpp
-               )
-
-target_include_directories(Testnor 
-	                       PRIVATE
-						   ${core_includes}
-                           ${includes}/nor/nor_gate.h
-                           )
-
-target_link_libraries(Testnor ${SYSLIBS} GTest::GTest GTest::Main)
+if(ENABLE_ACCEPTANCE)
+  add_subdirectory(acceptances)
+endif()
 
 
 

@@ -1,8 +1,8 @@
 #pragma once
 
 #include<string>
-
-class Node
+#include "LogicSimulator_Export.h"
+class LogicSimulator_EXPORT Node
 {
 
 
