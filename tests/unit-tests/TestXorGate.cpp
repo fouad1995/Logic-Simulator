@@ -2,56 +2,68 @@
 
 #include "../include/xor/XOR_Gate.h"
 
-class TestXor {
+class TestXor :public ::testing::Test {
 
-public:
-	TestXor(int input1, int input2) {
-		auto xor = new xor_gate();
-		xor ->set_in1(new Node("1", input1));
-		xor ->set_in2(new Node("2", input2));
-		xor ->set_out(new Node("out"));//<! out will be set
-		xor ->Calculate_Out();
-		result = xor ->get_out()->getvalue();
-	};
+protected:
 
-	int get_result() {
-		return result;
+	std::unique_ptr<Gate> _gate;
+
+	void SetUp() override {
+		_gate = std::make_unique<xor_gate>();
+
+
 	}
 
-private:
-	int result;
+	void TearDown() override {
+
+	}
+
 };
 
+TEST_F(TestXor, Test_11) {
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("1", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
-TEST(Xor, Test_11) {
-
-	TestXor xor (1, 1);
-	auto result = xor .get_result();
 
 	ASSERT_EQ(0, result);
 }
 
 
-TEST(Xor, Test_10) {
+TEST_F(TestXor, Test_10) {
 
-	TestXor xor (1, 0);
-	auto result = xor .get_result();
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("1", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
-	ASSERT_EQ(1, result);
-}
-
-TEST(Xor, Test_01) {
-
-	TestXor xor (0, 1);
-	auto result = xor .get_result();
 
 	ASSERT_EQ(1, result);
 }
 
-TEST(Xor, Test_00) {
+TEST_F(TestXor, Test_01) {
 
-	TestXor xor (0, 0);
-	auto result = xor .get_result();
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("1", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
+
+
+	ASSERT_EQ(1, result);
+}
+
+TEST_F(TestXor, Test_00) {
+
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("1", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
+
 
 	ASSERT_EQ(0, result);
 }

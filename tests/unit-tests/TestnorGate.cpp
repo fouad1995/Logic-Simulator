@@ -2,61 +2,63 @@
 
 #include "../include/nor/NOR_Gate.h"
 
-class TestNor {
+class TestNor :public ::testing::Test {
 
-public:
-	TestNor(int input1, int input2) {
-		auto nor = new nor_gate();
-		nor->set_in1(new Node("1", input1));
-		nor->set_in2(new Node("2", input2));
-		nor->set_out(new Node("out"));//<! out will be set
-		nor->Calculate_Out();
-		result = nor->get_out()->getvalue();
-	};
+protected:
 
-	int get_result() {
-		return result;
+	std::unique_ptr<Gate> _gate;
+
+	void SetUp() override {
+		_gate = std::make_unique<nor_gate>();
+
+
 	}
 
-private:
-	int result;
+	void TearDown() override {
+
+	}
+
 };
 
-TEST(Nor, Test_11) {
+TEST_F(TestNor, Test_11) {
 
-	auto nor = TestNor(1, 1);
-	auto result = nor.get_result();
-
-
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("2", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 	ASSERT_EQ(0, result);
 
 }
 
-TEST(Nor, Test_10) {
+TEST_F(TestNor, Test_10) {
 
-
-	auto nor = TestNor(1, 0);
-	auto result = nor.get_result();
-
-
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("2", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 	ASSERT_EQ(0, result);
 }
 
-TEST(Nor, Test_01) {
+TEST_F(TestNor, Test_01) {
 
-
-	auto nor = TestNor(0, 1);
-	auto result = nor.get_result();
-
-
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("2", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 	ASSERT_EQ(0, result);
 
 }
 
-TEST(Nor, Test_00) {
+TEST_F(TestNor, Test_00) {
 
-	auto nor = TestNor(0, 0);
-	auto result = nor.get_result();
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("2", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
 	ASSERT_EQ(1, result);
 

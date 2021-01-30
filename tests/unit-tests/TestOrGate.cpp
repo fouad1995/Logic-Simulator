@@ -2,56 +2,65 @@
 
 #include "../include/or/OR_Gate.h"
 
-class TestOr {
 
-public:
-	TestOr(int input1, int input2) {
-		auto or = new or_gate();
-		or ->set_in1(new Node("1", input1));
-		or ->set_in2(new Node("2", input2));
-		or ->set_out(new Node("out"));//<! out will be set
-		or ->Calculate_Out();
-		result = or->get_out()->getvalue();
-	};
+class TestOr :public ::testing::Test {
 
-	int get_result() {
-		return result;
+protected:
+
+	std::unique_ptr<Gate> _gate;
+
+	void SetUp() override {
+		_gate = std::make_unique<or_gate>();
+
+
 	}
 
-private:
-	int result;
+	void TearDown() override {
+
+	}
+
 };
 
+TEST_F(TestOr, Test_11) {
 
-TEST(Or, Test_11) {
-
-	TestOr or (1, 1);
-	auto result = or .get_result();
-
-	ASSERT_EQ(1, result);
-}
-
-
-TEST(Or, Test_10) {
-
-	TestOr or (1, 0);
-	auto result = or .get_result();
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("1", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
 	ASSERT_EQ(1, result);
 }
 
-TEST(Or, Test_01) {
 
-	TestOr or (0, 1);
-	auto result = or .get_result();
+TEST_F(TestOr, Test_10) {
+
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("1", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
 	ASSERT_EQ(1, result);
 }
 
-TEST(Or, Test_00) {
+TEST_F(TestOr, Test_01) {
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("1", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
-	TestOr or (0, 0);
-	auto result = or .get_result();
+	ASSERT_EQ(1, result);
+}
+
+TEST_F(TestOr, Test_00) {
+
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("1", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
 	ASSERT_EQ(0, result);
 }

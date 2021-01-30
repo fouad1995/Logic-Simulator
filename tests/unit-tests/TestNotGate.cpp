@@ -4,37 +4,36 @@
 //<! TODO(FOUAD) : apply more checks as NOT-GATE is "not" allowed to take more than one input 
 //<! but currently it will take one input if you gave it two inputs it will ignore the second one
 
-class TestNot {
-public:
-	TestNot(int input1) {
-		auto not = new not_gate();
-		not->set_in1(new Node("1", input1));
-		not->set_out(new Node("out"));//<! out will be set
-		not->Calculate_Out();
-		result = not ->get_out()->getvalue();
-	};
+class TestNot :public ::testing::Test {
 
-	int get_result() {
-		return result;
+protected:
+
+	std::unique_ptr<Gate> _gate;
+
+	void SetUp() override {
+		_gate = std::make_unique<not_gate>();
+
+
 	}
 
-private:
-	int result;
+	void TearDown() override {
+
+	}
 
 };
+TEST_F(TestNot, Test_1) {
 
-TEST(Not, Test_1) {
-
-	TestNot not (1);
-	auto result = not .get_result();
-
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 	ASSERT_EQ(0, result);
 }
 
-TEST(Not, Test_0) {
-
-	TestNot not (0);
-	auto result = not .get_result();
-
+TEST_F(TestNot, Test_0) {
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 	ASSERT_EQ(1, result);
 }

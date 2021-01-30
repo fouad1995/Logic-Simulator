@@ -2,61 +2,66 @@
 
 #include "../include/and/AND_gate.h"
 
-class TestAnd {
+class TestAnd:public ::testing::Test {
 
-public:
-	TestAnd(int input1 , int input2) {
-		auto and = new and_gate();
-		and ->set_in1(new Node("1", input1));
-		and ->set_in2(new Node("2", input2));
-		and ->set_out(new Node("out"));//<! out will be set
-		and ->Calculate_Out();
-		result = and ->get_out()->getvalue();
-	};
+protected:
 
-	int get_result() {
-		return result;
+	std::unique_ptr<Gate> _gate;
+
+	 void SetUp() override {
+		_gate = std::make_unique<and_gate>();
+		
+
+	}
+	
+	 void TearDown() override {
+	
 	}
 
-private:
-	int result;
 };
 
-TEST(And,Test_11) {
-	
-	auto And = TestAnd(1, 1);
-	auto result = And.get_result();
+TEST_F(TestAnd,Test_11) {
+
+	_gate ->set_in1(new Node("1", 1));
+	_gate ->set_in2(new Node("1", 1));
+	_gate ->set_out(new Node("out"));//<! out will be set
+	_gate ->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
 
 	ASSERT_EQ(1, result);
 	
 }
 
-TEST(And, Test_10) {
+TEST_F(TestAnd, Test_10) {
 
-	auto And = TestAnd(1, 0);
-	auto result = And.get_result();
-
-
-	ASSERT_EQ(0, result);
-
-}
-
-TEST(And, Test_01) {
-
-	auto And = TestAnd(0, 1);
-	auto result = And.get_result();
-
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("2", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
 	ASSERT_EQ(0, result);
 
 }
 
-TEST(And, Test_00) {
+TEST_F(TestAnd, Test_01) {
 
-	auto And = TestAnd(0, 0);
-	auto result = And.get_result();
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("2", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
+
+}
+
+TEST_F(TestAnd, Test_00) {
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("2", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
 	ASSERT_EQ(0, result);
 

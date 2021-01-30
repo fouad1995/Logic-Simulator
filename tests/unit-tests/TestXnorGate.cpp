@@ -2,56 +2,69 @@
 
 #include "../include/xnor/XNOR_Gate.h"
 
-class TestXnor {
+class TestXnor :public ::testing::Test {
 
-public:
-	TestXnor(int input1, int input2) {
-		auto xnor = new xnor_gate();
-		xnor->set_in1(new Node("1", input1));
-		xnor->set_in2(new Node("2", input2));
-		xnor->set_out(new Node("out"));//<! out will be set
-		xnor->Calculate_Out();
-		result = xnor->get_out()->getvalue();
-	};
+protected:
 
-	int get_result() {
-		return result;
+	std::unique_ptr<Gate> _gate;
+
+	void SetUp() override {
+		_gate = std::make_unique<xnor_gate>();
+
+
 	}
 
-private:
-	int result;
+	void TearDown() override {
+
+	}
+
 };
 
 
-TEST(Xnor, Test_11) {
+TEST_F(TestXnor, Test_11) {
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("1", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
-	TestXnor xnor (1, 1);
-	auto result = xnor .get_result();
 
 	ASSERT_EQ(1, result);
 }
 
 
-TEST(Xnor, Test_10) {
+TEST_F(TestXnor, Test_10) {
 
-	TestXnor xnor(1, 0);
-	auto result = xnor.get_result();
+	_gate->set_in1(new Node("1", 1));
+	_gate->set_in2(new Node("1", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
 
-	ASSERT_EQ(0, result);
-}
-
-TEST(Xnor, Test_01) {
-
-	TestXnor xnor(0, 1);
-	auto result = xnor.get_result();
 
 	ASSERT_EQ(0, result);
 }
 
-TEST(Xnor, Test_00) {
+TEST_F(TestXnor, Test_01) {
 
-	TestXnor xnor(0, 0);
-	auto result = xnor.get_result();
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("1", 1));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
+
+
+	ASSERT_EQ(0, result);
+}
+
+TEST_F(TestXnor, Test_00) {
+
+	_gate->set_in1(new Node("1", 0));
+	_gate->set_in2(new Node("1", 0));
+	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->Calculate_Out();
+	auto result = _gate->get_out()->getvalue();
+
 
 	ASSERT_EQ(1, result);
 }

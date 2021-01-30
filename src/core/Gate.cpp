@@ -10,7 +10,7 @@ Gate::~Gate(){
 
 void Gate::set_in1(Node* FirstInput)
 {
-	mFirstInput = FirstInput;
+	mFirstInput = new Node(*FirstInput);
 }
 
 Node* Gate::get_in1()
