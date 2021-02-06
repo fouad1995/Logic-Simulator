@@ -22,32 +22,32 @@ public:
 	/*@brief set the first input to the Gate 
 	* @param	FirstInput  Node represents the first input
 	*/
-	void set_in1(Node* FirstInput);
+	void set_in1(std::shared_ptr<Node> FirstInput);
 
 	/*@brief set the second input to the Gate
 	* @param	SecondInput  Node represents the second input
 	*/
-	void set_in2(Node* SecondInput);
+	void set_in2(std::shared_ptr<Node> SecondInput);
 
 	/*@brief set the output of the Gate
 	* @param	Out  Node represents the output of the gate
 	*/
-	void set_out(Node* Out);
+	void set_out(std::shared_ptr<Node> Out);
 
 	/*@brief	get the first input of the gate
 	* @return	Node*  Node represents the first input of the gate
 	*/
-	Node* get_in1();
+	std::shared_ptr<Node> get_in1();
 
 	/*@brief	get the second input of the gate
 	* @return	Node*  Node represents the second input of the gate
 	*/
-	Node* get_in2();
+	std::shared_ptr<Node> get_in2();
 
 	/*@brief	get the output of the gate
 	* @return	Node*  Node represents the output of the gate
 	*/
-	Node* get_out();
+	std::shared_ptr<Node> get_out();
 
 	/*@brief a pure virtual function that each subclass must implement on its way
 	* For example , each gate has its own output calculation like AND gate differs from OR gate
@@ -55,8 +55,8 @@ public:
 	virtual void Calculate_Out() = 0;
 
 protected:
-	Node* mFirstInput;  //<! first input to gate 
-	Node* mSecondInput; //<! second input to gate
-	Node* mOut;			//<! output from gate
+	std::shared_ptr<Node> mFirstInput;  //<! first input to gate 
+	std::shared_ptr<Node> mSecondInput; //<! second input to gate
+	std::shared_ptr<Node> mOut;			//<! output from gate
 };
 

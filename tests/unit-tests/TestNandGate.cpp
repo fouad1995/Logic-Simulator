@@ -22,9 +22,9 @@ protected:
 };
 TEST_F(TestNand,Test_11) {
 	
-	_gate->set_in1(new Node("1", 1));
-	_gate->set_in2(new Node("2", 1));
-	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->set_in1(std::make_shared<Node>("1", 1));
+	_gate->set_in2(std::make_shared<Node>("2", 1));
+	_gate->set_out(std::make_shared<Node>("out"));//<! out will be set
 	_gate->Calculate_Out();
 	auto result = _gate->get_out()->getvalue();
 
@@ -34,9 +34,9 @@ TEST_F(TestNand,Test_11) {
 
 TEST_F(TestNand, Test_10) {
 
-	_gate->set_in1(new Node("1", 1));
-	_gate->set_in2(new Node("2", 0));
-	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->set_in1(std::make_shared<Node>("1", 1));
+	_gate->set_in2(std::make_shared<Node>("2", 0));
+	_gate->set_out(std::make_shared<Node>("out"));//<! out will be set
 	_gate->Calculate_Out();
 	auto result = _gate->get_out()->getvalue();
 
@@ -45,9 +45,9 @@ TEST_F(TestNand, Test_10) {
 
 TEST_F(TestNand, Test_01) {
 
-	_gate->set_in1(new Node("1", 0));
-	_gate->set_in2(new Node("2", 1));
-	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->set_in1(std::make_shared<Node>("1", 0));
+	_gate->set_in2(std::make_shared<Node>("2", 1));
+	_gate->set_out(std::make_shared<Node>("out"));//<! out will be set
 	_gate->Calculate_Out();
 	auto result = _gate->get_out()->getvalue();
 	ASSERT_EQ(1, result);
@@ -56,9 +56,9 @@ TEST_F(TestNand, Test_01) {
 
 TEST_F(TestNand, Test_00) {
 
-	_gate->set_in1(new Node("1", 0));
-	_gate->set_in2(new Node("2", 0));
-	_gate->set_out(new Node("out"));//<! out will be set
+	_gate->set_in1(std::make_shared<Node>("1", 0));
+	_gate->set_in2(std::make_shared<Node>("2", 0));
+	_gate->set_out(std::make_shared<Node>("out"));//<! out will be set
 	_gate->Calculate_Out();
 	auto result = _gate->get_out()->getvalue();
 

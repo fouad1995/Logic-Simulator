@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.12)
 project(LogicSimulator LANGUAGES CXX)
 
 # ===========================================
-option(ENABLE_SPIKES     "Build spikes"           ON)
-option(ENABLE_TESTS      "Build unit tests"       ON)
-option(ENABLE_ACCEPTANCE "Build acceptance tests" ON)
+option(ENABLE_SPIKES           "Build spikes"             ON)
+option(ENABLE_TESTS            "Build unit tests"         ON)
+option(ENABLE_ACCEPTANCE       "Build acceptance tests"   ON)
 # ===========================================
 # ================================== PACKAGES ==========================================
 
@@ -28,7 +28,7 @@ target_sources(
     src/or/or_gate.cpp
     src/xnor/xnor_gate.cpp
     src/xor/xor_gate.cpp
-)
+    )
 
 target_include_directories(
     LogicSimulator
